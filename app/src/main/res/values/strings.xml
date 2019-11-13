@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Shopping</string>
 
-<!--    Actions bar -->
+    <!--    Actions bar -->
     <string name="shopping_cart">Shopping cart</string>
 
     <!--    Bottom Navigation Bar -->
@@ -22,7 +22,7 @@
     <string name="sample_image_title">Image</string>
     <string name="sample_image_description">Sample Image</string>
     <string name="home_advertisement_banner_description">Advertisement Banner</string>
-    <string name="buy_now">BUY NOW</string>
+    <string name="buy_now">Buy now</string>
     <string name="home_deal_superdeal" translatable="false">SUPER DEAL</string>
     <string name="account_exam_text">Account Fragment</string>
     <string name="home_deal_item_sample_title" translatable="false">iPad WiFi 32GB New 2018 - Hàng Nhập Khẩu Chính Hãng</string>
@@ -40,9 +40,15 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!--    Account Fragment -->
-    <string name="login">LOGIN</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
     <string name="please_login">Please login to receive super deals from Shopping!</string>
     <string name="log_out">Log out</string>
+    <string name="signup_name">Full Name</string>
+    <string name="signup_email" translatable="false">Email</string>
+    <string name="signup_phone">Phone number</string>
+    <string name="signup_password">Enter password</string>
+    <string name="signup_retype_password">Confirm password</string>
+    <string name="signup_have_account">Have an account?</string>
 
 </resources>

@@ -8,7 +8,7 @@
     <string name="bottom_navigation_search_title">Tìm kiếm</string>
     <string name="category_exam_text">Fragment Danh mục</string>
     <string name="home_advertisement_banner_description">Quảng cáo</string>
-    <string name="buy_now">MUA NGAY</string>
+    <string name="buy_now">Mua ngay</string>
     <string name="home_exam_text">Fragment Trang chủ</string>
     <string name="home_search_hint">Bạn đang cần tìm gì?</string>
     <string name="menu_item_about_app">Về ứng dụng</string>
@@ -19,9 +19,14 @@
     <string name="sample_image_title">Hình ảnh</string>
     <string name="search_exam_text">Fragment Tìm kiếm</string>
     <string name="home_deal_item_discount_percent">-20%</string>
-    <string name="sign_up">ĐĂNG KÝ</string>
-    <string name="login">ĐĂNG NHẬP</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="login">Đăng nhập</string>
     <string name="please_login">Hãy đăng nhập để nhận những siêu ưu đãi từ Shopping!</string>
     <string name="log_out">Đăng xuất</string>
     <string name="shopping_cart">Giỏ hàng</string>
+    <string name="signup_name">Họ và Tên</string>
+    <string name="signup_retype_password">Nhập lại mật khẩu</string>
+    <string name="signup_password">Mật khẩu</string>
+    <string name="signup_phone">Số điện thoại</string>
+    <string name="signup_have_account">Đã có tài khoản?</string>
 </resources>

@@ -200,6 +200,7 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:background">@drawable/buy_now_custom_button</item>
         <item name="android:textColor">@drawable/buy_now_button_text_color</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 
@@ -584,8 +585,9 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">3</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/sign_up_button_custom</item>
-        <item name="android:textColor">@drawable/sign_up_button_text_color</item>
+        <item name="android:background">@drawable/not_login_account_sign_up_button_custom</item>
+        <item name="android:textColor">@drawable/not_login_account_sign_up_button_text_color</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
         <item name="android:clickable">true</item>
         <item name="android:textSize">17sp</item>
@@ -598,6 +600,7 @@
         <item name="android:layout_weight">4</item>
         <item name="android:background">@drawable/login_button_custom</item>
         <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">17sp</item>
         <item name="android:clickable">true</item>
@@ -637,6 +640,24 @@
         <item name="android:divider">@null</item>
         <item name="android:dividerHeight">0dp</item>
         <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <style name="signup_text_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="signup_input_edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_black</item>
     </style>
 
 </resources>

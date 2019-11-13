@@ -1,5 +1,6 @@
 package vn.edu.uit.tmlnghia.shopping.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import vn.edu.uit.tmlnghia.shopping.Activities.DanhSachSanPhamActivity;
+import vn.edu.uit.tmlnghia.shopping.Activities.SignupActivity;
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.adapters.AccountActionAdapter;
 import vn.edu.uit.tmlnghia.shopping.models.AccountActionListRow;
@@ -34,7 +37,7 @@ public class NotLoginAccountFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_not_login_account, container, false);
+        final View view = inflater.inflate(R.layout.fragment_not_login_account, container, false);
 
         actionListRows = new ArrayList<>();
         actionListRows.add(new AccountActionListRow(R.drawable.cart_action_icon, "Xem giỏ hàng"));
@@ -79,7 +82,8 @@ public class NotLoginAccountFragment extends Fragment {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Đăng ký", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), SignupActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 
