@@ -1,0 +1,642 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+<!--    Main Activity -->
+    <style name="main_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="main_activity_frame_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_above">@id/bottom_navigation</item>
+    </style>
+
+    <style name="main_activity_bottom_navigation">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/bottom_navigation_color</item>
+    </style>
+
+
+<!--    Home Fragment -->
+    <style name="home_fragment_nested_scrollview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="home_fragment_scroll_linearlayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="home_fragment_linear_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/background_color_gray</item>
+    </style>
+
+    <!--    Thanh tìm kiếm -->
+    <style name="home_fragment_search_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:queryHint">@string/home_search_hint</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:background">@color/search_view_background_color</item>
+    </style>
+
+<!--    Item Group -->
+
+<!--    Khung chứa item group -->
+    <style name="home_fragment_item_group_recyclerview">
+        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">7dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="home_fragment_item_group_item_container_cardview">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="home_fragment_item_group_item_linearlayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="home_item_group_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingEnd">7dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+
+    <!--    Hình ảnh của nhóm mặt hàng -->
+    <style name="home_fragment_item_group_item_image_cardview">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="home_fragment_item_group_item_imageview">
+        <item name="android:contentDescription">@string/sample_image_description</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+<!--    Tiêu đề nhóm mặt hàng -->
+    <style name="home_fragment_item_group_item_textview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+
+
+    <!--    Thanh quảng cáo -->
+<!--    Khung chứa thanh quảng cáo -->
+    <style name="home_advertisement_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@color/part_color_white</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="home_advertisement_linear_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--    Tạo viền bo tròn cho banner quảng cáo -->
+
+    <style name="home_advertisement_banner_cardview">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">290dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <!--    Hình ảnh quảng cáo -->
+
+
+    <style name="home_advertisement_banner_image">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">240dp</item>
+        <item name="android:background">@drawable/clothes</item>
+        <item name="android:contentDescription">@string/sample_image_description</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <!--    Tiêu đề quảng cáo -->
+    <style name="home_advertisement_title_linear_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <style name="home_advertisement_banner_title">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!--    Nút bấm Buy Now -->
+    <style name="home_advertisement_banner_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/buy_now_custom_button</item>
+        <item name="android:textColor">@drawable/buy_now_button_text_color</item>
+    </style>
+
+
+    <!--    Danh sách các mặt hàng giảm giá -->
+
+    <!--    Tiêu đề SUPER DEAL -->
+    <style name="home_super_deal_container">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <style name="home_fragment_superdeal">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/super_deal_background_color</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+<!--    Khung chứa mặt hàng giảm giá -->
+    <style name="home_fragment_deal_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <!--    CardView chứa khung hiển thị của mặt hàng -->
+    <style name="home_deal_item_cardview">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+<!--    LinearLayout chứa khung hiển thị của mặt hàng-->
+    <style name="home_deal_item_linearlayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+<!--    Hình ảnh mặt hàng -->
+    <style name="home_deal_item_image_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">190dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+<!--    Tên mặt hàng -->
+    <style name="home_deal_item_title_textview">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--    Giá đã giảm -->
+    <style name="home_deal_item_new_price">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/new_price_text_color</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!--    Giá cũ chưa giảm -->
+    <style name="home_deal_item_old_price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <!--    Phần trăm đã được giảm -->
+    <style name="home_deal_item_discount_percent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/discount_percent_color</item>
+    </style>
+
+
+<!--    Category Fragment -->
+
+    <!--    LinearLayout chứa toàn bộ category fragment -->
+    <style name="category_fragment_linear_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/background_color_gray</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <!--    Thanh tìm kiếm -->
+    <style name="category_fragment_search_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:queryHint">@string/home_search_hint</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:background">@color/search_view_background_color</item>
+    </style>
+
+    <!--    LinearLayout chứa khung từng nhóm mặt hàng -->
+    <style name="category_item_linear_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--    Hình ảnh nhóm mặt hàng -->
+    <style name="category_item_group_item_image_view">
+        <item name="android:contentDescription">@string/sample_image_description</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <!--    Tiêu đề từng nhóm mặt hàng -->
+    <style name="category_item_group_item_text_view">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+
+    <style name="category_fragment_nest_scroll_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="category_fragment_scroll_linear_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--    Tiêu đề từng lĩnh vực -->
+    <style name="category_fragment_item_group_text_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/part_color_white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+    </style>
+
+    <!--    Recycler view chứa danh sách nhóm mặt hàng -->
+    <style name="category_fragment_item_group_recycler_view">
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:scrollbarSize">2dp</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:background">@color/part_color_white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--    Search Fragment -->
+
+    <!--    Account Fragment -->
+
+    <!--    Account actions list row-->
+
+    <!--    Khung chứa 1 dòng hành động -->
+    <style name="account_action_container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <!--    icon của hành động -->
+    <style name="account_action_icon_imageview">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <!--    Tiêu đề của hành động -->
+    <style name="account_action_title_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">35dp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--    icon mũi tên bên phải -->
+    <style name="account_go_icon">
+        <item name="android:layout_width">15dp</item>
+        <item name="android:layout_height">15dp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+
+    <!--    Logged in account -->
+
+    <!--    Khung cuộn toàn bộ màn hình -->
+    <style name="logged_in_account_container_nestedscrollview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/account_background_color</item>
+    </style>
+
+    <style name="logged_in_account_container_linearlayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!--    Khung chứa thông tin tài khoản -->
+    <style name="logged_in_account_information_constraintlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/part_color_white</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <!--    Khung chứa avatar -->
+    <style name="logged_in_account_avatar_cardview">
+        <item name="android:layout_marginStart">35dp</item>
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+    </style>
+
+    <style name="logged_in_account_avatar_imageview">
+        <item name="android:contentDescription">@string/sample_image_description</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!--    Khung chứa các thông tin chữ -->
+    <style name="logged_in_account_information_container_linearlayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">20dp</item>
+    </style>
+    <!--    Tên -->
+    <style name="logged_in_account_name_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!--    Mail -->
+    <style name="logged_in_account_mail_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!--    Điện thoại -->
+    <style name="logged_in_account_phone_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--    Khung chứa nút đăng xuất -->
+    <style name="logged_in_account_logout_linearlayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!--    Chữ đăng xuất -->
+    <style name="logged_in_account_logout_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--    Icon mũi tên bên phải chữ đăng xuất -->
+    <style name="logged_in_account_logout_imageview">
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginStart">4dp</item>
+    </style>
+
+    <!--    Danh sách các hành động của tài khoản -->
+    <style name="logged_in_account_actions_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <!--    Danh sách các cài đặt của tài khoản -->
+    <style name="logged_in_account_setting_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <!--    Not log in account -->
+
+    <!--    Khung chứa toàn bộ màn hình -->
+    <style name="not_login_account_container_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/account_background_color</item>
+    </style>
+
+    <!--    Dòng chữ khuyến khích đăng nhập -->
+    <style name="not_login_account_please_login_textview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/part_color_white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!--    Khung chứa nút đăng nhập và đăng ký -->
+    <style name="not_login_account_button_container_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:weightSum">7</item>
+        <item name="android:background">@color/part_color_white</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!--    Nút đăng ký -->
+    <style name="not_login_account_sign_up_textview">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/sign_up_button_custom</item>
+        <item name="android:textColor">@drawable/sign_up_button_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <!--    Nút đăng nhập -->
+    <style name="not_login_account_login_textview">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:background">@drawable/login_button_custom</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!--    Khung cuộn chứa danh sách hành động và danh sách cài đặt -->
+    <style name="not_log_in_account_actions_nestedscrollview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="not_log_in_account_actions_linearlayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <!--    Danh sách hành động của tài khoản -->
+    <style name="not_log_in_account_actions_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+    <!--    Danh sách cài đặt của tài khoản -->
+    <style name="not_log_in_account_setting_recyclerview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:background">@color/part_color_white</item>
+    </style>
+
+</resources>

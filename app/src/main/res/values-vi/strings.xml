@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mua sắm</string>
+    <string name="account_exam_text">Fragment Tài khoản</string>
+    <string name="bottom_navigation_account_information_title">Tài khoản</string>
+    <string name="bottom_navigation_category_title">Danh mục</string>
+    <string name="bottom_navigation_home_title">Trang chủ</string>
+    <string name="bottom_navigation_search_title">Tìm kiếm</string>
+    <string name="category_exam_text">Fragment Danh mục</string>
+    <string name="home_advertisement_banner_description">Quảng cáo</string>
+    <string name="buy_now">MUA NGAY</string>
+    <string name="home_exam_text">Fragment Trang chủ</string>
+    <string name="home_search_hint">Bạn đang cần tìm gì?</string>
+    <string name="menu_item_about_app">Về ứng dụng</string>
+    <string name="menu_item_help">Giúp đỡ</string>
+    <string name="menu_item_shopping_cart">Giỏ hàng</string>
+    <string name="menu_item_version_app">Phiên bản %s</string>
+    <string name="sample_image_description">Hình ảnh mẫu</string>
+    <string name="sample_image_title">Hình ảnh</string>
+    <string name="search_exam_text">Fragment Tìm kiếm</string>
+    <string name="home_deal_item_discount_percent">-20%</string>
+    <string name="sign_up">ĐĂNG KÝ</string>
+    <string name="login">ĐĂNG NHẬP</string>
+    <string name="please_login">Hãy đăng nhập để nhận những siêu ưu đãi từ Shopping!</string>
+    <string name="log_out">Đăng xuất</string>
+    <string name="shopping_cart">Giỏ hàng</string>
+</resources>
