@@ -26,8 +26,8 @@
     <string name="home_deal_superdeal" translatable="false">SUPER DEAL</string>
     <string name="account_exam_text">Account Fragment</string>
     <string name="home_deal_item_sample_title" translatable="false">iPad WiFi 32GB New 2018 - Hàng Nhập Khẩu Chính Hãng</string>
-    <string name="home_deal_item_new_price" translatable="false">4.590.000 vnd</string>
-    <string name="home_deal_item_old_price" translatable="false">5.490.000 vnd</string>
+    <string name="home_deal_item_new_price" translatable="false">4.590.000 đ</string>
+    <string name="home_deal_item_old_price" translatable="false">5.490.000 đ</string>
     <string name="home_deal_item_discount_percent">-20%</string>
 
 
@@ -50,5 +50,23 @@
     <string name="signup_password">Enter password</string>
     <string name="signup_retype_password">Confirm password</string>
     <string name="signup_have_account">Have an account?</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login_with">Or login with</string>
+    <string name="facebook" translatable="false">Facebook</string>
+    <string name="zalo" translatable="false">Zalo</string>
+    <string name="google" translatable="false">Google</string>
+    <string name="login_mail_or_phone">Email/Phone number</string>
+    <string name="dont_have_account">Don\'t have account?</string>
+    <string name="gender">Gender:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="old_price">Old price</string>
+    <string name="discount">Discount</string>
+    <string name="shopping_cart_sample_discount" translatable="false">-2.140.000 đ</string>
+    <string name="total">Total</string>
+    <string name="vat_included">VAT included</string>
+    <string name="order">Proceed to ordering</string>
+    <string name="not_now">Not now?</string>
+    <string name="success">Success</string>
 
 </resources>

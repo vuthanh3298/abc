@@ -115,12 +115,12 @@ public class CategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
 
-        RecyclerView giaDinhNhaCuaRecyclerView = view.findViewById(R.id.category_recycler_view_giadinh_nhacua);
-        RecyclerView congNgheRecyclerView = view.findViewById(R.id.category_recycler_view_congnghe);
-        RecyclerView hangTieuDungRecyclerView = view.findViewById(R.id.category_recycler_view_hangtieudung_thucpham);
-        RecyclerView thoiTrangRecyclerView = view.findViewById(R.id.category_recycler_view_thoitrang);
-        RecyclerView congViecRecyclerView = view.findViewById(R.id.category_recycler_view_congviec);
-        RecyclerView giaiTriRecyclerView = view.findViewById(R.id.category_recycler_view_giaitri);
+        RecyclerView giaDinhNhaCuaRecyclerView = view.findViewById(R.id.recycler_view_giadinh_nhacua);
+        RecyclerView congNgheRecyclerView = view.findViewById(R.id.recycler_view_congnghe);
+        RecyclerView hangTieuDungRecyclerView = view.findViewById(R.id.recycler_view_hangtieudung_thucpham);
+        RecyclerView thoiTrangRecyclerView = view.findViewById(R.id.recycler_view_thoitrang);
+        RecyclerView congViecRecyclerView = view.findViewById(R.id.recycler_view_congviec);
+        RecyclerView giaiTriRecyclerView = view.findViewById(R.id.recycler_view_giaitri);
 
         final CategoryItemGroupAdapter gia_dinh_nha_cua_Adapter = new CategoryItemGroupAdapter(getActivity(), gia_dinh_nha_cua);
         CategoryItemGroupAdapter cong_nghe_Adapter = new CategoryItemGroupAdapter(getActivity(), cong_nghe);

@@ -22,26 +22,6 @@ import vn.edu.uit.tmlnghia.shopping.fragments.SearchFragment;
 public class MainActivity extends AppCompatActivity {
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-//  Tạo thanh điều hướng bên dưới cho activity
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-//        Tạo thanh actions bar
-        getMenuInflater().inflate(R.menu.main_actions, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -71,10 +51,30 @@ public class MainActivity extends AppCompatActivity {
             }
 
             assert selectedFragment != null;
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, selectedFragment).commit();
             return true;
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+//        Tạo thanh actions bar
+        getMenuInflater().inflate(R.menu.main_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+//  Tạo thanh điều hướng bên dưới cho activity
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

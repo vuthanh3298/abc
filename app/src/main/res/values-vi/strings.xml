@@ -29,4 +29,18 @@
     <string name="signup_password">Mật khẩu</string>
     <string name="signup_phone">Số điện thoại</string>
     <string name="signup_have_account">Đã có tài khoản?</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="login_mail_or_phone">Email/Số điện thoại</string>
+    <string name="login_with">Hoặc đăng nhập với</string>
+    <string name="dont_have_account">Chưa có tài khoản?</string>
+    <string name="female">Nữ</string>
+    <string name="gender">Giới tính:</string>
+    <string name="male">Nam</string>
+    <string name="discount">Giảm giá</string>
+    <string name="old_price">Tạm tính</string>
+    <string name="order">Tiến hành đặt hàng</string>
+    <string name="total">Thành tiền</string>
+    <string name="vat_included">Đã bao gồm VAT</string>
+    <string name="not_now">Không phải bây giờ?</string>
+    <string name="success">Thành công</string>
 </resources>

@@ -5,7 +5,7 @@
 
     <!--    Thanh tìm kiếm -->
     <SearchView
-        android:id="@+id/home_fragment_search"
+        android:id="@+id/search_bar"
         style="@style/home_fragment_search_view" />
 
     <!--    Khung cuộn -->
@@ -15,12 +15,12 @@
 
             <!--            Khung gợi ý các nhóm hàng dưới thanh tìm kiếm -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_item_group_recyclerview"
+                android:id="@+id/item_group_recyclerview"
                 style="@style/home_item_group_recyclerview"></androidx.recyclerview.widget.RecyclerView>
 
             <!--            Khung quảng cáo -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_advertisement_recyclerview"
+                android:id="@+id/advertisement_recyclerview"
                 style="@style/home_advertisement_recyclerview"></androidx.recyclerview.widget.RecyclerView>
 
             <!--            tiêu đề SUPER DEAL -->
@@ -33,7 +33,7 @@
 
             <!--            Khung giảm giá -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_deal_recyclerview"
+                android:id="@+id/deal_recyclerview"
                 style="@style/home_fragment_deal_recyclerview"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>

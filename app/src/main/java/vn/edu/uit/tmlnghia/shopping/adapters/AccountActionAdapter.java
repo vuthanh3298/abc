@@ -73,9 +73,9 @@ public class AccountActionAdapter extends RecyclerView.Adapter<AccountActionAdap
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.account_action_title_textview);
-            icon = itemView.findViewById(R.id.account_action_icon_imageview);
-            container = itemView.findViewById(R.id.account_action_container);
+            title = itemView.findViewById(R.id.action_title);
+            icon = itemView.findViewById(R.id.action_icon);
+            container = itemView.findViewById(R.id.container);
         }
     }
 }

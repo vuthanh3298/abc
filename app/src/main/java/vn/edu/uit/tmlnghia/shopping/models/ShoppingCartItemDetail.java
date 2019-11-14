@@ -6,17 +6,20 @@ public class ShoppingCartItemDetail {
     private String seller;
     private int image;
     private int price;
+    private int numberOfItem;
+
 
 
     public ShoppingCartItemDetail(){
 
     }
 
-    public ShoppingCartItemDetail(String name, String seller, int image, int price) {
+    public ShoppingCartItemDetail(String name, String seller, int image, int price, int numberOfItem) {
         this.name = name;
         this.seller = seller;
         this.image = image;
         this.price = price;
+        this.numberOfItem = numberOfItem;
     }
 
     public String getName() {
@@ -49,5 +52,13 @@ public class ShoppingCartItemDetail {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getNumberOfItem() {
+        return numberOfItem;
+    }
+
+    public void setNumberOfItem(int numberOfItem) {
+        this.numberOfItem = numberOfItem;
     }
 }

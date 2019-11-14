@@ -35,10 +35,10 @@ public class LoggedInAccountFragment extends Fragment {
 
         final TextView logout_button = view.findViewById(R.id.logout_btn);
 
-        ImageView avatar = (ImageView) view.findViewById(R.id.avatar);
-        TextView name = (TextView) view.findViewById(R.id.logged_in_account_name);
-        TextView mail = (TextView) view.findViewById(R.id.logged_in_account_mail);
-        TextView phone = (TextView) view.findViewById(R.id.logged_in_account_phone);
+        ImageView avatar = view.findViewById(R.id.avatar);
+        TextView name = view.findViewById(R.id.logged_in_account_name);
+        TextView mail = view.findViewById(R.id.logged_in_account_mail);
+        TextView phone = view.findViewById(R.id.logged_in_account_phone);
 
 //        TODO truyền thông tin người dùng để hiển thị
         avatar.setImageResource(R.drawable.avatar_img);
@@ -89,7 +89,7 @@ public class LoggedInAccountFragment extends Fragment {
             public void onClick(View v) {
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new NotLoginAccountFragment());
+                fragmentTransaction.replace(R.id.container, new NotLoginAccountFragment());
                 fragmentTransaction.commit();
             }
         });

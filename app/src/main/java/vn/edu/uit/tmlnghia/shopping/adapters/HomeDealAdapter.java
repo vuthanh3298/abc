@@ -57,7 +57,7 @@ public class HomeDealAdapter extends RecyclerView.Adapter<HomeDealAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         String newPrice = getPrice(data.get(position).getNewPrice(), 0) + " đ";
-        SpannableString oldPrice = new SpannableString(getPrice(data.get(position).getOldPrice(), 0) + " vnd");
+        SpannableString oldPrice = new SpannableString(getPrice(data.get(position).getOldPrice(), 0) + " đ");
 //        Tính số phần trăm được giảm giá và chuyển về String
         String discountPercent = "-" + (int) (100 - ((float) data.get(position).getNewPrice() / (float) data.get(position).getOldPrice()) * 100) + "%";
 

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.uit.tmlnghia.shopping.Activities.DanhSachSanPhamActivity;
+import vn.edu.uit.tmlnghia.shopping.Activities.LoginActivity;
 import vn.edu.uit.tmlnghia.shopping.Activities.SignupActivity;
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.adapters.AccountActionAdapter;
@@ -73,9 +74,8 @@ public class NotLoginAccountFragment extends Fragment {
         settingRecyclerView.setAdapter(settingAdapter);
 
 
-
-        TextView signUp = (TextView) view.findViewById(R.id.sign_up_button);
-        TextView logIn = (TextView) view.findViewById(R.id.login_button);
+        TextView signUp = view.findViewById(R.id.sign_up_button);
+        TextView logIn = view.findViewById(R.id.login_button);
 
 //        TODO thiết lập sự kiện nhấn cho nút đăng ký
 //        Chuyển đến màn hình đăng ký - đăng nhập (Chưa làm)
@@ -92,9 +92,8 @@ public class NotLoginAccountFragment extends Fragment {
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new LoggedInAccountFragment());
-                fragmentTransaction.commit();
+                Intent intent = new Intent(view.getContext(), LoginActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 

@@ -95,9 +95,9 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        RecyclerView itemGroupRecyclerView = view.findViewById(R.id.home_item_group_recyclerview);
-        RecyclerView dealRecyclerView = view.findViewById(R.id.home_deal_recyclerview);
-        RecyclerView advertisementRecyclerView = view.findViewById(R.id.home_advertisement_recyclerview);
+        RecyclerView itemGroupRecyclerView = view.findViewById(R.id.item_group_recyclerview);
+        RecyclerView dealRecyclerView = view.findViewById(R.id.deal_recyclerview);
+        RecyclerView advertisementRecyclerView = view.findViewById(R.id.advertisement_recyclerview);
 
 
         HomeItemGroupAdapter itemGroupAdapter = new HomeItemGroupAdapter(getActivity(), listItemGroup);

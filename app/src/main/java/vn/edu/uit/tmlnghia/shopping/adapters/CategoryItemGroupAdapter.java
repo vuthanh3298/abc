@@ -74,9 +74,9 @@ public class CategoryItemGroupAdapter extends RecyclerView.Adapter<CategoryItemG
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_image_title = itemView.findViewById(R.id.category_item_title_id);
-            img_image = itemView.findViewById(R.id.category_item_image_id);
-            linearLayout = itemView.findViewById(R.id.category_item_linear_layout);
+            tv_image_title = itemView.findViewById(R.id.item_title);
+            img_image = itemView.findViewById(R.id.item_image);
+            linearLayout = itemView.findViewById(R.id.container);
 
         }
     }
