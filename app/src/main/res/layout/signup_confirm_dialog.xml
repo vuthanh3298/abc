@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/please"
         style="@style/signup_confirm_dialog_please"
-        android:text="@string/please_login"
+        android:text="@string/login_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/success" />

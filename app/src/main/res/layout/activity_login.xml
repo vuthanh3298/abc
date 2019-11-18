@@ -39,7 +39,6 @@
         style="@style/login_signup_button"
         android:text="@string/login" />
 
-
     <TextView
         android:id="@+id/forgot_password"
         style="@style/login_screen_forget_password_textview"
@@ -57,7 +56,6 @@
             android:text="@string/sign_up" />
 
     </LinearLayout>
-
 
     <TextView
         style="@style/login_screen_login_with"
@@ -81,5 +79,4 @@
             android:text="@string/google" />
 
     </LinearLayout>
-
 </LinearLayout>

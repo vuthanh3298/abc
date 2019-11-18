@@ -87,9 +87,14 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Giúp đỡ", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.shopping_cart:
-
                 //    TODO Gán hành động cho việc nhấn vào giỏ hàng trên actions bar, chuyển đến màn hình giỏ hàng
-                Intent intent = new Intent(this, ShoppingCartActivity.class);
+//                Nếu giỏ hàng trống thì chuyển đến empty activity
+//                Nếu giỏ hàng không trống thì chuyển đến giỏ hàng
+                Intent intent;
+                if (!true)
+                    intent = new Intent(this, EmptyShoppingCartActivity.class);
+                else
+                    intent = new Intent(this, ShoppingCartActivity.class);
                 this.startActivity(intent);
                 return true;
         }

@@ -67,6 +67,9 @@
     <string name="vat_included">VAT included</string>
     <string name="order">Proceed to ordering</string>
     <string name="not_now">Not now?</string>
-    <string name="success">Success</string>
+    <string name="success">Sign Up success!</string>
+    <string name="shopping_cart_is_empty">Shopping cart is empty!</string>
+    <string name="continue_shopping">Continue shopping</string>
+    <string name="login_now">Login now for more offers</string>
 
 </resources>

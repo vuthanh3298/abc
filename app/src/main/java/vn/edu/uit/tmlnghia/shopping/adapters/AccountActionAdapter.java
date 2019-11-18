@@ -48,7 +48,7 @@ public class AccountActionAdapter extends RecyclerView.Adapter<AccountActionAdap
         holder.icon.setImageResource(data.get(position).getIcon());
 
 //        TODO Tạo sự kiện nhấn cho các chức năng của tài khoản
-//        Nếu chưa đăng nhập thì hiển thị màn hình Đăng nhập (Chưa làm)
+//        Nếu chưa đăng nhập thì hiển thị màn hình Đăng nhập
 //        Nếu đã đăng nhập thì hiển thị Toast thông báo chức năng đã được nhấn
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override

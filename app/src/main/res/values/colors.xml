@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--    Launcher -->
     <color name="colorPrimary">#3498db</color>
     <color name="colorPrimaryDark">#2980b9</color>
@@ -9,6 +10,7 @@
     <color name="text_color_white">@color/white_color</color>
     <color name="text_color_black">@color/black_color</color>
     <color name="text_color_gray">#4d4d4d</color>
+    <color name="success_color">#4BB543</color>
 
 <!--    Màu dùng chung -->
     <color name="white_color">#ffffff</color>

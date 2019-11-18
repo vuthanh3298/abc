@@ -78,7 +78,7 @@ public class NotLoginAccountFragment extends Fragment {
         TextView logIn = view.findViewById(R.id.login_button);
 
 //        TODO thiết lập sự kiện nhấn cho nút đăng ký
-//        Chuyển đến màn hình đăng ký - đăng nhập (Chưa làm)
+//        Chuyển đến màn hình đăng ký
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +88,7 @@ public class NotLoginAccountFragment extends Fragment {
         });
 
 //        TODO thiết lập sự kiện nhấn cho nút đăng nhập
-//        Chuyển đến màn hình đăng ký - đăng nhập (Chưa làm)
+//        Chuyển đến màn hình đăng nhập
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
