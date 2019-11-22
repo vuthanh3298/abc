@@ -71,5 +71,8 @@
     <string name="shopping_cart_is_empty">Shopping cart is empty!</string>
     <string name="continue_shopping">Continue shopping</string>
     <string name="login_now">Login now for more offers</string>
+    <string name="connection_error">Connection error</string>
+    <string name="error_detail">There was an error, please try again</string>
+    <string name="try_again">Try again</string>
 
 </resources>

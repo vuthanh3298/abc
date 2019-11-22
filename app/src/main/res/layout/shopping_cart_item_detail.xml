@@ -95,7 +95,7 @@
                 android:textSize="15sp"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:background="@color/item_group_background_color"/>
+                android:background="@color/dark_white_color" />
 
             <ImageView
                 android:id="@+id/increase_button"

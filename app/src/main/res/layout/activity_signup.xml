@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/sign_up_name"
-            style="@style/signup_input_edit_text"
+            style="@style/signup_name_edit_text"
             android:hint="@string/signup_name" />
 
     </com.google.android.material.textfield.TextInputLayout>

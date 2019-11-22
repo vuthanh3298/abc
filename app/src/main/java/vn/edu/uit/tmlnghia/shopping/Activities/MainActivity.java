@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,6 +22,11 @@ import vn.edu.uit.tmlnghia.shopping.fragments.NotLoginAccountFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    //    Tạo biến đếm cho số sản phẩm trong giỏ hàng
+    TextView itemCounter;
+    int numOfItem = 0;
+    MenuItem menuItem;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -61,6 +68,21 @@ public class MainActivity extends AppCompatActivity {
 
 //        Tạo thanh actions bar
         getMenuInflater().inflate(R.menu.main_actions, menu);
+
+//        Xét các trường hợp cho icon giỏ hàng
+//        Nếu biến đếm = 0 thì không hiển thị số sản phẩm
+//        Nếu biến đếm khác 0 thì hiển thị số sản phẩm
+        menuItem = menu.findItem(R.id.shopping_cart);
+        if (numOfItem == 0) {
+            menuItem.setActionView(null);
+        } else {
+            menuItem.setActionView(R.layout.shopping_cart_actionbar_icon);
+            View view = menuItem.getActionView();
+            itemCounter = view.findViewById(R.id.item_count);
+            itemCounter.setText(String.valueOf(numOfItem));
+        }
+//        TODO Chưa thêm được onClickListener cho icon giỏ hàng có số đếm
+
         return super.onCreateOptionsMenu(menu);
     }
 

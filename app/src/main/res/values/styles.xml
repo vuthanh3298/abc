@@ -59,11 +59,11 @@
         <item name="android:background">@color/search_view_background_color</item>
     </style>
 
-<!--    Item Group -->
+    <!--    Item Group -->
 
-<!--    Khung chứa item group -->
+    <!--    Khung chứa item group -->
     <style name="home_fragment_item_group_recyclerview">
-        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:background">@color/dark_white_color</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingStart">5dp</item>
@@ -85,7 +85,7 @@
     </style>
     <style name="home_fragment_item_group_item_linearlayout">
         <item name="android:orientation">vertical</item>
-        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:background">@color/dark_white_color</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
@@ -94,7 +94,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:background">@color/dark_white_color</item>
         <item name="android:paddingStart">5dp</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingEnd">7dp</item>
@@ -116,13 +116,13 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-<!--    Tiêu đề nhóm mặt hàng -->
+    <!--    Tiêu đề nhóm mặt hàng -->
     <style name="home_fragment_item_group_item_textview">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:background">@color/dark_white_color</item>
         <item name="android:textSize">13sp</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
@@ -132,7 +132,7 @@
 
 
     <!--    Thanh quảng cáo -->
-<!--    Khung chứa thanh quảng cáo -->
+    <!--    Khung chứa thanh quảng cáo -->
     <style name="home_advertisement_recyclerview">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -242,7 +242,7 @@
         <item name="android:layout_margin">5dp</item>
     </style>
 
-<!--    LinearLayout chứa khung hiển thị của mặt hàng-->
+    <!--    LinearLayout chứa khung hiển thị của mặt hàng-->
     <style name="home_deal_item_linearlayout">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
@@ -250,7 +250,7 @@
         <item name="android:padding">10dp</item>
     </style>
 
-<!--    Hình ảnh mặt hàng -->
+    <!--    Hình ảnh mặt hàng -->
     <style name="home_deal_item_image_view">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">190dp</item>
@@ -258,7 +258,7 @@
         <item name="android:background">@color/part_color_white</item>
     </style>
 
-<!--    Tên mặt hàng -->
+    <!--    Tên mặt hàng -->
     <style name="home_deal_item_title_textview">
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
@@ -397,6 +397,7 @@
     </style>
 
     <!--    Search Fragment -->
+
 
     <!--    Account Fragment -->
 
@@ -642,6 +643,20 @@
         <item name="android:background">@color/part_color_white</item>
     </style>
 
+
+    <!--    Màn hình đăng ký -->
+    <!--    Khung chứa màn hình đăng ký -->
+    <style name="signup_screen_container_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/dark_white_color</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingEnd">30dp</item>
+    </style>
+
+    <!--    Ô nhập thông tin đăng ký -->
     <style name="signup_text_input_layout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -651,7 +666,8 @@
         <item name="android:focusableInTouchMode">true</item>
     </style>
 
-    <style name="signup_input_edit_text">
+    <!--    Ô nhập họ tên -->
+    <style name="signup_name_edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:ems">10</item>
@@ -660,176 +676,7 @@
         <item name="android:textColor">@color/text_color_black</item>
     </style>
 
-    <style name="login_screen_container_linearlayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/item_group_background_color</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingStart">30dp</item>
-        <item name="android:paddingTop">30dp</item>
-        <item name="android:paddingEnd">30dp</item>
-    </style>
-
-    <style name="login_id_text_input_layout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingEnd">20dp</item>
-        <item name="android:layout_marginTop">15dp</item>
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-    </style>
-
-    <style name="login_id_edit_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:ems">10</item>
-        <item name="android:inputType">textEmailAddress</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/text_color_black</item>
-    </style>
-
-    <style name="login_password_text_input_layout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingEnd">20dp</item>
-        <item name="android:layout_marginTop">15dp</item>
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-    </style>
-
-    <style name="login_password_edit_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:ems">10</item>
-        <item name="android:inputType">textPassword</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/text_color_black</item>
-    </style>
-
-    <style name="login_screen_login_button">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">50dp</item>
-        <item name="android:layout_marginTop">50dp</item>
-        <item name="android:layout_marginEnd">50dp</item>
-        <item name="android:background">@drawable/login_signup_button_custom</item>
-        <item name="android:clickable">true</item>
-        <item name="android:gravity">center</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/text_color_white</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="login_screen_forget_password_textview">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:padding">5dp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:clickable">true</item>
-    </style>
-
-    <style name="login_screen_dont_have_account_linearlayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="login_screen_dont_have_account_textview">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">bottom</item>
-        <item name="android:padding">5dp</item>
-        <item name="android:textColor">@color/text_color_gray</item>
-        <item name="android:textSize">15sp</item>
-    </style>
-
-    <style name="login_screen_signup_textview">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:clickable">true</item>
-        <item name="android:gravity">bottom</item>
-        <item name="android:padding">5dp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="login_screen_login_with">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:padding">5dp</item>
-        <item name="android:textColor">@color/text_color_gray</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:clickable">true</item>
-    </style>
-
-    <style name="login_screen_other_source_linearlayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">52dp</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:gravity">center</item>
-        <item name="android:weightSum">100</item>
-        <item name="android:layout_marginTop">10dp</item>
-    </style>
-
-    <style name="login_screen_facebook">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">30</item>
-        <item name="android:layout_margin">0.5dp</item>
-        <item name="android:background">#3b5998</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/text_color_white</item>
-        <item name="android:clickable">true</item>
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
-    </style>
-
-    <style name="login_screen_zalo">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">30</item>
-        <item name="android:layout_margin">0.5dp</item>
-        <item name="android:background">#1E90FF</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/text_color_white</item>
-        <item name="android:clickable">true</item>
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
-    </style>
-
-    <style name="login_screen_google">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">30</item>
-        <item name="android:layout_margin">0.5dp</item>
-        <item name="android:background">#DB4437</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/text_color_white</item>
-        <item name="android:clickable">true</item>
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
-    </style>
-
-    <style name="signup_screen_container_linearlayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/item_group_background_color</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:paddingStart">30dp</item>
-        <item name="android:paddingTop">20dp</item>
-        <item name="android:paddingEnd">30dp</item>
-    </style>
-
+    <!--    Khung nhập email -->
     <style name="signup_email_edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -839,6 +686,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--    Khung nhập số điện thoại -->
     <style name="signup_phone_edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -848,6 +696,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--    Khung nhập password -->
     <style name="signup_password_edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -857,6 +706,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--    Khung nhập lại password -->
     <style name="signup_confirm_password_edit_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -866,6 +716,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--    Khung chọn giới tính -->
     <style name="signup_gender_linearlayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -873,6 +724,7 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <!--    Dòng chữ giới tính -->
     <style name="signup_gender_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
@@ -882,12 +734,14 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--    Group các giới tính -->
     <style name="sign_up_gender_radio_group">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <!--    Radio chọn giới tính -->
     <style name="sign_up_gender_radio">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
@@ -897,6 +751,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--    Nút đăng ký/Đăng nhập trong 2 màn hình Đăng ký/Đăng nhập -->
     <style name="login_signup_button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -913,6 +768,185 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+
+    <!--    Màn hình đăng nhập -->
+
+    <!--    Khung chứa màn hình đăng nhập -->
+    <style name="login_screen_container_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/dark_white_color</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingTop">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
+    </style>
+
+    <!--    Khung nhập họ tên đăng nhập -->
+    <style name="login_id_text_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+    <style name="login_id_edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <!--    Khung nhập mật khẩu đăng nhập -->
+    <style name="login_password_text_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+    <style name="login_password_edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <!--    Nút đăng nhập -->
+    <style name="login_screen_login_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">50dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_marginEnd">50dp</item>
+        <item name="android:background">@drawable/login_signup_button_custom</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Dòng chữ quên mật khẩu -->
+    <style name="login_screen_forget_password_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!--    Dòng chữ chưa có tài khoản và link đăng ký -->
+    <!--    Khung chứa -->
+    <style name="login_screen_dont_have_account_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!--    Dòng chữ chưa có tài khoản -->
+    <style name="login_screen_dont_have_account_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--    Nút đăng ký -->
+    <style name="login_screen_signup_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Dòng chữ đăng nhập với -->
+    <style name="login_screen_login_with">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!--    Khung chứa các nguồn đăng nhập khác -->
+    <style name="login_screen_other_source_linearlayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:weightSum">100</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <!--    Đăng nhập bằng facebook -->
+    <style name="login_screen_facebook">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">30</item>
+        <item name="android:layout_margin">0.5dp</item>
+        <item name="android:background">@color/facebook_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <!--    Đăng nhập bằng zalo -->
+    <style name="login_screen_zalo">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">30</item>
+        <item name="android:layout_margin">0.5dp</item>
+        <item name="android:background">@color/zalo_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <!--    Đăng nhập bằng google -->
+    <style name="login_screen_google">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">30</item>
+        <item name="android:layout_margin">0.5dp</item>
+        <item name="android:background">@color/google_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+
+    <!--    Màn hình giỏ hàng -->
+
+    <!--    Khung chứa giỏ hàng -->
     <style name="shopping_cart_container_linearlayout">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
@@ -921,6 +955,7 @@
         <item name="android:weightSum">100</item>
     </style>
 
+    <!--    Khung cuộn danh sách trong giỏ hàng -->
     <style name="shopping_cart_scroll_nestscrollview">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
@@ -928,18 +963,19 @@
         <item name="android:layout_marginBottom">0.5dp</item>
         <item name="android:background">@color/background_color_gray</item>
     </style>
-
     <style name="shopping_cart_scroll_linearlayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
     </style>
 
+    <!--    Dánh sách các vật phẩm trong giỏ hàng -->
     <style name="shopping_cart_item_list_recyclerview">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--    Khung chứa các giá chi tiết phía dưới danh sách sản phẩm trong giỏ hàng -->
     <style name="shopping_cart_detail_price_constrainlayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">120dp</item>
@@ -949,6 +985,7 @@
         <item name="android:background">@color/part_color_white</item>
     </style>
 
+    <!--    Các dòng chữ trong khung giá chi tiết -->
     <style name="shopping_cart_detail_price_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -956,6 +993,7 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!--    Khung chứa giá đã giảm -->
     <style name="shopping_cart_discount_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -963,14 +1001,16 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!--    Khung chứa phần tổng quát giỏ hàng -->
     <style name="shopping_cart_order_overview_constraintlayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">27</item>
         <item name="android:padding">20dp</item>
-        <item name="android:background">@color/item_group_background_color</item>
+        <item name="android:background">@color/dark_white_color</item>
     </style>
 
+    <!--    Dòng chữ tổng tiền -->
     <style name="shopping_cart_total_title_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">30dp</item>
@@ -978,6 +1018,7 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!--    Số tiền tổng cộng -->
     <style name="shopping_cart_total_price_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">30dp</item>
@@ -987,6 +1028,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!--    Nút bấm tiến hành đặt hàng -->
     <style name="shopping_cart_order_button_textview">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1001,6 +1043,7 @@
         <item name="android:layout_marginTop">20dp</item>
     </style>
 
+    <!--    Khung chứa logo trong màn hình login -->
     <style name="login_logo_container_linearlayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1008,6 +1051,7 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!--    Dòng chữ MUA SẮM trong logo -->
     <style name="login_logo_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1016,6 +1060,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <!--    Hình ảnh giỏ hàng trong logo -->
     <style name="login_logo_imageview">
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">70dp</item>
@@ -1024,6 +1069,7 @@
         <item name="android:paddingEnd">20dp</item>
     </style>
 
+    <!--    Khung chứa dialog xác nhận đăng ký thành công -->
     <style name="signup_confirm_dialog_container_constraintlayout">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
@@ -1035,6 +1081,7 @@
         <item name="android:paddingEnd">30dp</item>
     </style>
 
+    <!--    Dòng chữ Đăng ký thành công -->
     <style name="signup_confirm_dialog_success">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1043,6 +1090,7 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+    <!--    Dòng chữ khuyến khích đăng nhập -->
     <style name="signup_confirm_dialog_please">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1054,6 +1102,7 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <!--    Dòng chữ Không phải bây giờ -->
     <style name="signup_confirm_dialog_notnow">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1063,6 +1112,7 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <!--    Dòng chữ đăng nhập -->
     <style name="signup_confirm_dialog_login">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
