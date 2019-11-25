@@ -74,5 +74,6 @@
     <string name="connection_error">Connection error</string>
     <string name="error_detail">There was an error, please try again</string>
     <string name="try_again">Try again</string>
+    <string name="about_product">About Product</string>
 
 </resources>
