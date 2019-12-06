@@ -3,12 +3,22 @@ package vn.edu.uit.tmlnghia.shopping.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.net.URLEncoder;
+
 import vn.edu.uit.tmlnghia.shopping.R;
+import vn.edu.uit.tmlnghia.shopping.until.UserPresent;
+import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,10 +29,17 @@ public class LoginActivity extends AppCompatActivity {
     TextView zalo;
     TextView google;
 
+    EditText edtEmail, edtPassword;
+
+    int values = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Intent intent = getIntent();
+        values = intent.getIntExtra("chitietsanpham",-1);
 
 //        TODO Thiết lập thanh action bar, thay đổi nút bấm close
         getSupportActionBar().setTitle(R.string.login);
@@ -36,13 +53,18 @@ public class LoginActivity extends AppCompatActivity {
         zalo = this.findViewById(R.id.zalo);
         google = this.findViewById(R.id.google);
 
+        edtEmail = this.findViewById(R.id.login_id);
+        edtPassword = this.findViewById(R.id.login_password);
+
 //        TODO Thiết lập hành động nhấn cho nút đăng nhập
 //        Kiểm tra dữ liệu, chuyển về màn hình home
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                v.getContext().startActivity(intent);
+                String params = "?email=" + URLEncoder.encode(edtEmail.getText().toString()) +
+                        "&password=" + URLEncoder.encode(edtPassword.getText().toString());
+                loginTask task = new loginTask();
+                task.execute(params);
             }
         });
 
@@ -51,8 +73,8 @@ public class LoginActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SignupActivity.class);
-                v.getContext().startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                LoginActivity.this.startActivity(intent);
             }
         });
 
@@ -89,5 +111,53 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(v.getContext(), "Đăng nhập bằng Google", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openMain(){
+        Intent intent;
+        if(values == 1){
+            finish();
+            return;
+        } else {
+            intent = new Intent(LoginActivity.this, SignupActivity.class);
+        }
+        LoginActivity.this.startActivity(intent);
+    }
+
+    class loginTask extends AsyncTask<String, Void, Boolean>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            if(aBoolean.booleanValue() == true){
+                openMain();
+            } else {
+                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            try{
+                JSONArray jsonArray = Webserviecs.getJsonArray("api/users" + strings[0]);
+                if(jsonArray.length() > 0){
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    UserPresent.user_id = jsonObject.getString("_id");
+                    return true;
+                }
+            } catch (Exception ex){
+                Log.e("Loi: ", ex.toString());
+            }
+            return false;
+        }
     }
 }

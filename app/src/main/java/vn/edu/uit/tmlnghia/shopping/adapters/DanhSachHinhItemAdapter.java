@@ -11,20 +11,21 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.Activities.RecyclerViewClickListener;
+import vn.edu.uit.tmlnghia.shopping.R;
+import vn.edu.uit.tmlnghia.shopping.until.ImageLoadTask;
 
 public class DanhSachHinhItemAdapter extends RecyclerView.Adapter<DanhSachHinhItemAdapter.MyViewHolder>{
     private Context context;
-    private ArrayList<Integer> data;
+    private ArrayList<String> data;
     private RecyclerViewClickListener itemListener;
 
-    public DanhSachHinhItemAdapter(Context context, ArrayList<Integer> data) {
+    public DanhSachHinhItemAdapter(Context context, ArrayList<String> data) {
         this.context = context;
         this.data = data;
     }
 
-    public DanhSachHinhItemAdapter(Context context, ArrayList<Integer> data, RecyclerViewClickListener itemListener) {
+    public DanhSachHinhItemAdapter(Context context, ArrayList<String> data, RecyclerViewClickListener itemListener) {
         this.context = context;
         this.data = data;
         this.itemListener = itemListener;
@@ -43,7 +44,7 @@ public class DanhSachHinhItemAdapter extends RecyclerView.Adapter<DanhSachHinhIt
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.image.setImageResource(data.get(position));
+        (new ImageLoadTask(data.get(position),holder.image)).execute();
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

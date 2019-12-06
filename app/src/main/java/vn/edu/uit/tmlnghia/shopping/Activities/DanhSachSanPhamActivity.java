@@ -1,23 +1,19 @@
 package vn.edu.uit.tmlnghia.shopping.Activities;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.adapters.DanhSachSanPhamAdapter;
 import vn.edu.uit.tmlnghia.shopping.models.SanPham;
+import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class DanhSachSanPhamActivity extends AppCompatActivity {
@@ -32,33 +28,14 @@ public class DanhSachSanPhamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_san_pham);
         loadData();
         initControls();
-
     }
 
     private void loadData() {
-//        ArrayList<Integer> hinhs = new ArrayList<Integer>();
-//        hinhs.add(R.drawable.balo_tui_xach);
-//        hinhs.add(R.drawable.banh_keo);
-//        hinhs.add(R.drawable.bep_gas_bep_dien);
-//        hinhs.add(R.drawable.bia_ruou_nuoc_ngot);
-//        hinhs.add(R.drawable.chuot_gamming);
-//        hinhs.add(R.drawable.do_choi);
-////
+        Intent intent = getIntent();
+        String maDM = intent.getStringExtra("danhmuc");
         sanPhams = new ArrayList<>();
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
-//        sanPhams.add(new SanPham(hinhs,"sản phẩm abc","đây là sản phẩm abc", 100000, 120000, 20));
         LoadSanPhamTask task = new LoadSanPhamTask();
-        task.execute("dt");
+        task.execute(maDM);
     }
 
     private void initControls() {
@@ -95,27 +72,16 @@ public class DanhSachSanPhamActivity extends AppCompatActivity {
         protected ArrayList<SanPham> doInBackground(String... strings) {
             ArrayList<SanPham> sanPhams = new ArrayList<>();
             try{
-                URL url = new URL("http://192.168.1.110/webservices/api/sanpham");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-
-                InputStreamReader isr = new InputStreamReader(connection.getInputStream(), "UTF-8");
-                BufferedReader br = new BufferedReader(isr);
-                StringBuilder builder = new StringBuilder();
-                String line = null;
-                while((line = br.readLine()) != null){
-                    builder.append(line);
-                }
-                JSONArray jsonArray = new JSONArray(builder.toString());
+                //JSONArray jsonArray = Webserviecs.getJsonArray("sanpham?madm=" + strings[0]);
+                JSONArray jsonArray = Webserviecs.getJsonArray("api/sanphams?madm=" + strings[0]);
                 for(int i = 0; i < jsonArray.length(); i++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String masp = jsonObject.getString("maSP");
+                    String masp = jsonObject.getString("_id");
                     String ten = jsonObject.getString("tenSP");
                     String mota = jsonObject.getString("moTa");
-                    double gia = jsonObject.getDouble("gia");
-                    double giaCu = jsonObject.getDouble("giaCu");
-                    double giamGia = jsonObject.getDouble("tiLeGiamGia");
+                    double gia = Double.parseDouble(jsonObject.getString("gia"));
+                    double giaCu = Double.parseDouble(jsonObject.getString("giaCu"));
+                    double giamGia = Double.parseDouble(jsonObject.getString("tiLeGiamGia"));
                     String hinh = jsonObject.getString("hinh");
                     SanPham sp = new SanPham();
                     sp.setMaSanPham(masp);
@@ -127,7 +93,6 @@ public class DanhSachSanPhamActivity extends AppCompatActivity {
                     sp.setHinh(hinh);
                     sanPhams.add(sp);
                 }
-                br.close();
                 return sanPhams;
             }catch (Exception ex){
                 Log.e("Loi: ", ex.toString());

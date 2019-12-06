@@ -1,34 +1,44 @@
 package vn.edu.uit.tmlnghia.shopping.fragments;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+        import android.os.AsyncTask;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+        import org.json.JSONArray;
+        import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+        import androidx.annotation.NonNull;
+        import androidx.annotation.Nullable;
+        import androidx.fragment.app.Fragment;
+        import androidx.recyclerview.widget.GridLayoutManager;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
 
-import vn.edu.uit.tmlnghia.shopping.models.CategoryItemGroup;
-import vn.edu.uit.tmlnghia.shopping.adapters.CategoryItemGroupAdapter;
-import vn.edu.uit.tmlnghia.shopping.R;
+        import java.util.ArrayList;
+        import java.util.List;
+
+        import vn.edu.uit.tmlnghia.shopping.adapters.CategoryItemGroupAdapter2;
+        import vn.edu.uit.tmlnghia.shopping.models.CategoryItemGroup;
+        import vn.edu.uit.tmlnghia.shopping.adapters.CategoryItemGroupAdapter;
+        import vn.edu.uit.tmlnghia.shopping.R;
+        import vn.edu.uit.tmlnghia.shopping.models.DanhMuc;
+        import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
 
 public class CategoryFragment extends Fragment {
 
-//     Danh sách các nhóm hàng
-    List<CategoryItemGroup> gia_dinh_nha_cua;
+    //     Danh sách các nhóm hàng
+    List<DanhMuc> gia_dinh_nha_cua;
     List<CategoryItemGroup> cong_nghe;
     List<CategoryItemGroup> hang_tieu_dung_thuc_pham;
     List<CategoryItemGroup> thoi_trang;
     List<CategoryItemGroup> cong_viec;
     List<CategoryItemGroup> giai_tri;
 
+
+    CategoryItemGroupAdapter2 gia_dinh_nha_cua_Adapter;
 
 
     @Nullable
@@ -37,19 +47,22 @@ public class CategoryFragment extends Fragment {
 
 //        Thêm chi tiết nhóm hàng gia đình - nhà cửa
         gia_dinh_nha_cua = new ArrayList<>();
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Đồ chơi - Mẹ và Bé", R.drawable.do_choi));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Chăn - Drap - Gối - Nệm", R.drawable.chan_drap));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Dụng cụ dã ngoại", R.drawable.dung_cu_da_ngoai));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Bếp gas - Bếp điện", R.drawable.bep_gas_bep_dien));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Hoa tươi", R.drawable.hoa_tuoi));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Chén - Dĩa", R.drawable.chen_dia));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Dụng cụ nấu ăn", R.drawable.dung_cu_nau_an));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Đồ dùng và thiết bị nhà tắm", R.drawable.do_dung_va_thiet_bi_nha_tam));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Đèn và thiết bị chiếu sáng", R.drawable.den_va_thiet_bi_chieu_sang));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Nội thất", R.drawable.noi_that));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Xe máy - Xe đạp", R.drawable.xe_may_xe_dap));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("Ô tô", R.drawable.o_to));
-        gia_dinh_nha_cua.add(new CategoryItemGroup("TV - Tủ lạnh - Máy giặt", R.drawable.ti_vi_tu_lanh_may_giat));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Đồ chơi - Mẹ và Bé", R.drawable.do_choi));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Chăn - Drap - Gối - Nệm", R.drawable.chan_drap));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Dụng cụ dã ngoại", R.drawable.dung_cu_da_ngoai));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Bếp gas - Bếp điện", R.drawable.bep_gas_bep_dien));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Hoa tươi", R.drawable.hoa_tuoi));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Chén - Dĩa", R.drawable.chen_dia));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Dụng cụ nấu ăn", R.drawable.dung_cu_nau_an));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Đồ dùng và thiết bị nhà tắm", R.drawable.do_dung_va_thiet_bi_nha_tam));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Đèn và thiết bị chiếu sáng", R.drawable.den_va_thiet_bi_chieu_sang));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Nội thất", R.drawable.noi_that));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Xe máy - Xe đạp", R.drawable.xe_may_xe_dap));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("Ô tô", R.drawable.o_to));
+//        gia_dinh_nha_cua.add(new CategoryItemGroup("TV - Tủ lạnh - Máy giặt", R.drawable.ti_vi_tu_lanh_may_giat));
+
+        getDanhMucTask task = new getDanhMucTask();
+        task.execute("giadinhnhacua");
 
 //        Thêm chi tiết nhóm hàng Công nghệ
         cong_nghe = new ArrayList<>();
@@ -114,7 +127,6 @@ public class CategoryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-
         RecyclerView giaDinhNhaCuaRecyclerView = view.findViewById(R.id.recycler_view_giadinh_nhacua);
         RecyclerView congNgheRecyclerView = view.findViewById(R.id.recycler_view_congnghe);
         RecyclerView hangTieuDungRecyclerView = view.findViewById(R.id.recycler_view_hangtieudung_thucpham);
@@ -122,7 +134,7 @@ public class CategoryFragment extends Fragment {
         RecyclerView congViecRecyclerView = view.findViewById(R.id.recycler_view_congviec);
         RecyclerView giaiTriRecyclerView = view.findViewById(R.id.recycler_view_giaitri);
 
-        final CategoryItemGroupAdapter gia_dinh_nha_cua_Adapter = new CategoryItemGroupAdapter(getActivity(), gia_dinh_nha_cua);
+        gia_dinh_nha_cua_Adapter = new CategoryItemGroupAdapter2(getActivity(), gia_dinh_nha_cua);
         CategoryItemGroupAdapter cong_nghe_Adapter = new CategoryItemGroupAdapter(getActivity(), cong_nghe);
         CategoryItemGroupAdapter hangTieuDungAdapter = new CategoryItemGroupAdapter(getActivity(), hang_tieu_dung_thuc_pham);
         CategoryItemGroupAdapter thoiTrangAdapter = new CategoryItemGroupAdapter(getActivity(), thoi_trang);
@@ -155,4 +167,47 @@ public class CategoryFragment extends Fragment {
 
         return view;
     }
+
+    class getDanhMucTask extends AsyncTask<String, Void, ArrayList<DanhMuc>> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<DanhMuc> danhMucs) {
+            super.onPostExecute(danhMucs);
+            if(danhMucs != null){
+                gia_dinh_nha_cua.clear();
+                gia_dinh_nha_cua.addAll(danhMucs);
+                gia_dinh_nha_cua_Adapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected ArrayList<DanhMuc> doInBackground(String... strings) {
+            ArrayList<DanhMuc> danhMucs = new ArrayList<>();
+            try{
+                JSONArray jsonArray = Webserviecs.getJsonArray("api/danhmucs?manhomdm="+strings[0]);
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String maDanhMuc = jsonObject.getString("_id");
+                    String tenDanhMuc = jsonObject.getString("tenDM");
+                    String hinh = jsonObject.getString("hinh");
+                    DanhMuc dm = new DanhMuc(maDanhMuc,tenDanhMuc,hinh);
+                    danhMucs.add(dm);
+                }
+                return danhMucs;
+            }catch (Exception ex){
+                Log.e("Loi:",ex.toString());
+            }
+            return null;
+        }
+    }
 }
+

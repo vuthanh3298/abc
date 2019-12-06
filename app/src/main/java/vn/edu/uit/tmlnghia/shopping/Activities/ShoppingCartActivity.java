@@ -4,17 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.adapters.ShoppingCartItemDetailAdapter;
+import vn.edu.uit.tmlnghia.shopping.models.SanPham;
 import vn.edu.uit.tmlnghia.shopping.models.ShoppingCartItemDetail;
+import vn.edu.uit.tmlnghia.shopping.until.UserPresent;
+import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
@@ -37,6 +45,9 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.shopping_cart);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_action);
+
+        loadMaSanPhams loadMaTask = new loadMaSanPhams();
+        loadMaTask.execute("?" + UserPresent.user_id);
 
 //        Danh sách các mặt hàng trong giỏ hàng
         shoppingCartItemList = new ArrayList<>();
@@ -72,4 +83,42 @@ public class ShoppingCartActivity extends AppCompatActivity {
         });
 
     }
+
+    class loadMaSanPhams extends AsyncTask<String, Void, ArrayList<String>>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //gọi task xử lý lấy danh sách sản phẩm
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<String> strings) {
+            super.onPostExecute(strings);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected ArrayList<String> doInBackground(String... strings) {
+            ArrayList<String> maSanPhams = new ArrayList<>();
+            try{
+                //JSONArray jsonArray = Webserviecs.getJsonArray("sanpham?madm=" + strings[0]);
+                JSONArray jsonArray = Webserviecs.getJsonArray("api/donhangs" + strings[0]);
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String masp = jsonObject.getString("sanpham_id");
+                    maSanPhams.add(masp);
+                }
+                return maSanPhams;
+            }catch (Exception ex){
+                Log.e("Loi: ", ex.toString());
+            }
+            return null;
+        }
+    }
+
+   //class loadSanPhams extends AsyncTask<String, Void, >
 }

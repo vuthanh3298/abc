@@ -2,10 +2,7 @@ package vn.edu.uit.tmlnghia.shopping.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Paint;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +15,10 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import vn.edu.uit.tmlnghia.shopping.Activities.ChiTietSanPhamActivity;
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.models.SanPham;
-import vn.edu.uit.tmlnghia.shopping.Activities.ChiTietSanPhamActivity;
+import vn.edu.uit.tmlnghia.shopping.until.ImageLoadTask;
 
 public class DanhSachSanPhamAdapter extends RecyclerView.Adapter<DanhSachSanPhamAdapter.MyViewHolder> {
 
@@ -55,15 +53,13 @@ public class DanhSachSanPhamAdapter extends RecyclerView.Adapter<DanhSachSanPham
         holder.txtGiaCu.setText(dcf.format(sp.getGiaCu()) + "đ");
         holder.txtGiaCu.setPaintFlags(holder.txtGiaCu.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.txtGiamGia.setText("- " + sp.getGiamGia() + "%");
-
-        byte[] imageBytes = Base64.decode(sp.getHinh(), Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        holder.img.setImageBitmap(decodedImage);
+        new ImageLoadTask(sp.getHinh(), holder.img).execute();
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChiTietSanPhamActivity.class);
+                intent.putExtra("sanpham", sp);
                 context.startActivity(intent);
             }
         });
@@ -76,9 +72,9 @@ public class DanhSachSanPhamAdapter extends RecyclerView.Adapter<DanhSachSanPham
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-       TextView txtTenSanPham, txtGiaSanPham, txtGiaCu, txtGiamGia;
-       ImageView img;
-       CardView cardView;
+        TextView txtTenSanPham, txtGiaSanPham, txtGiaCu, txtGiamGia;
+        ImageView img;
+        CardView cardView;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -92,4 +88,6 @@ public class DanhSachSanPhamAdapter extends RecyclerView.Adapter<DanhSachSanPham
             img = itemView.findViewById(R.id.imgItemSanPham);
         }
     }
+
+
 }

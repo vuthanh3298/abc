@@ -1,6 +1,8 @@
 package vn.edu.uit.tmlnghia.shopping.models;
 
-public class SanPham {
+import java.io.Serializable;
+
+public class SanPham implements Serializable {
     private String maSanPham;
     private String tenSanPham;
     private String moTa;
