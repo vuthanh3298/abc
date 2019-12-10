@@ -4,22 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.adapters.ShoppingCartItemDetailAdapter;
-import vn.edu.uit.tmlnghia.shopping.models.SanPham;
 import vn.edu.uit.tmlnghia.shopping.models.ShoppingCartItemDetail;
 import vn.edu.uit.tmlnghia.shopping.until.UserPresent;
 import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
@@ -27,18 +31,20 @@ import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
 public class ShoppingCartActivity extends AppCompatActivity {
 
     List<ShoppingCartItemDetail> shoppingCartItemList;
+    ShoppingCartItemDetailAdapter shoppingCartItemDetailAdapter;
+    LinearLayout shoppingCartLayout;
     TextView oderButton;
     TextView oldPrice;
-    TextView discount;
     TextView totalPrice;
+
+    final DecimalFormat dcf = new DecimalFormat( "#,###,###,###" );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
-
+        shoppingCartLayout = this.findViewById(R.id.shopping_cart_layout);
         oldPrice = this.findViewById(R.id.old_price);
-        discount = this.findViewById(R.id.discount);
         totalPrice = this.findViewById(R.id.total_price);
 
 //        TODO Thiết lập thanh action bar, thay đổi chức năng nút close
@@ -46,34 +52,44 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_action);
 
-        loadMaSanPhams loadMaTask = new loadMaSanPhams();
-        loadMaTask.execute("?" + UserPresent.user_id);
-
-//        Danh sách các mặt hàng trong giỏ hàng
+//      Danh sách các mặt hàng trong giỏ hàng
         shoppingCartItemList = new ArrayList<>();
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 1));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 5));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 2));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 1));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 3));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 2));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 3));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 1));
-        shoppingCartItemList.add(new ShoppingCartItemDetail("Máy Ảnh Nikon D3500 KIT 18-55 VR (24.2MP) - Hàng Chính Hãng", "Tiki Trading", R.drawable.dien_thoai, 3990000, 2));
+        shoppingCartItemDetailAdapter = new ShoppingCartItemDetailAdapter(this, shoppingCartItemList, new MyAdapterListener() {
+            @Override
+            public void btnViewOnClick(View v, int position) {
+                final ShoppingCartItemDetail item = shoppingCartItemDetailAdapter.getData().get(position);
+                final int pos = position;
+                shoppingCartItemDetailAdapter.remove(position);
+                Snackbar snackbar = Snackbar
+                        .make(shoppingCartLayout, "Sản phẩm sẽ bị xoá khỏi giỏ hàng", Snackbar.LENGTH_LONG);
+                snackbar.setAction("Hoàn lại", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        shoppingCartItemDetailAdapter.restore(item, pos);
+                    }
+                }).addCallback(new Snackbar.Callback(){
+                    @Override
+                    public void onDismissed(Snackbar transientBottomBar, int event) {
+                        super.onDismissed(transientBottomBar, event);
+                        if(event != DISMISS_EVENT_ACTION){
+                            DeleteGioHangTask task = new DeleteGioHangTask();
+                            task.execute(item.getId());
+                        }
+                    }
+                });
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+                Toast.makeText(ShoppingCartActivity.this, position + "", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         RecyclerView itemListRecyclerView = this.findViewById(R.id.item_list);
-
-        ShoppingCartItemDetailAdapter shoppingCartItemDetailAdapter = new ShoppingCartItemDetailAdapter(this, shoppingCartItemList);
-
         LinearLayoutManager itemListLayoutManager = new LinearLayoutManager(this);
-
         itemListRecyclerView.setLayoutManager(itemListLayoutManager);
-
         itemListRecyclerView.setAdapter(shoppingCartItemDetailAdapter);
 
-
-//        TODO tạo sự kiện nhấn cho nút TIẾN HÀNH ĐẶT HÀNG
-//        Chuyển đến màn hình thông tin đặt hàng
+//      TODO tạo sự kiện nhấn cho nút TIẾN HÀNH ĐẶT HÀNG
+//      Chuyển đến màn hình thông tin đặt hàng
         oderButton = this.findViewById(R.id.oder_button);
         oderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,18 +98,34 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 
+        //load danh sach trong gio hang
+        if(UserPresent.user_id != null) {
+            LoadGioHangTask task = new LoadGioHangTask();
+            task.execute("?user_id=" + UserPresent.user_id);
+        }
     }
 
-    class loadMaSanPhams extends AsyncTask<String, Void, ArrayList<String>>{
+    private void LoadPrice(){
+        double giaTien = 0;
+        for(ShoppingCartItemDetail item : shoppingCartItemList){
+            giaTien += item.getPrice();
+        }
+        totalPrice.setText(dcf.format(giaTien) + "đ");
+        oldPrice.setText(dcf.format(giaTien) + "đ");
+    }
+
+    final class DeleteGioHangTask extends AsyncTask<String, Void, Boolean>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            //gọi task xử lý lấy danh sách sản phẩm
         }
 
         @Override
-        protected void onPostExecute(ArrayList<String> strings) {
-            super.onPostExecute(strings);
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            if(aBoolean.booleanValue() == true){
+                LoadPrice();
+            }
         }
 
         @Override
@@ -102,23 +134,58 @@ public class ShoppingCartActivity extends AppCompatActivity {
         }
 
         @Override
-        protected ArrayList<String> doInBackground(String... strings) {
-            ArrayList<String> maSanPhams = new ArrayList<>();
+        protected Boolean doInBackground(String... strings) {
             try{
-                //JSONArray jsonArray = Webserviecs.getJsonArray("sanpham?madm=" + strings[0]);
-                JSONArray jsonArray = Webserviecs.getJsonArray("api/donhangs" + strings[0]);
+                return Webserviecs.deleteAPI("api/giohangs/delete/" + strings[0]);
+            }catch (Exception ex){
+                Log.e("Loi delete api: ", ex.toString());
+            }
+            return null;
+        }
+    }
+
+    class LoadGioHangTask extends AsyncTask<String, Void, ArrayList<ShoppingCartItemDetail>>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<ShoppingCartItemDetail> shoppingCartItemDetails) {
+            super.onPostExecute(shoppingCartItemDetails);
+            if(shoppingCartItemDetails != null) {
+                shoppingCartItemList.clear();
+                shoppingCartItemList.addAll(shoppingCartItemDetails);
+                shoppingCartItemDetailAdapter.notifyDataSetChanged();
+                LoadPrice();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected ArrayList<ShoppingCartItemDetail> doInBackground(String... strings) {
+            ArrayList<ShoppingCartItemDetail> data = new ArrayList<>();
+            try{
+                JSONArray jsonArray = Webserviecs.getJsonArray("api/giohangs" + strings[0]);
                 for(int i = 0; i < jsonArray.length(); i++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String masp = jsonObject.getString("sanpham_id");
-                    maSanPhams.add(masp);
+                    String gioHangId = jsonObject.getString("_id");
+                    String tenSP = jsonObject.getString("tenSP");
+                    double thanhTien = Double.parseDouble(jsonObject.getString("thanhTien"));
+                    int soLuong = Integer.parseInt(jsonObject.getString("soLuong"));
+                    String hinh = jsonObject.getString("hinh");
+                    ShoppingCartItemDetail item = new ShoppingCartItemDetail(gioHangId, tenSP, "uit thsn", hinh, thanhTien, soLuong);
+                    data.add(item);
                 }
-                return maSanPhams;
+                return data;
             }catch (Exception ex){
                 Log.e("Loi: ", ex.toString());
             }
             return null;
         }
     }
-
-   //class loadSanPhams extends AsyncTask<String, Void, >
 }

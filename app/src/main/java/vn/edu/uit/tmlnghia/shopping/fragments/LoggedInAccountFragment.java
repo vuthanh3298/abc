@@ -20,6 +20,7 @@ import java.util.List;
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.adapters.AccountActionAdapter;
 import vn.edu.uit.tmlnghia.shopping.models.AccountActionListRow;
+import vn.edu.uit.tmlnghia.shopping.until.UserPresent;
 
 public class LoggedInAccountFragment extends Fragment {
 
@@ -87,7 +88,7 @@ public class LoggedInAccountFragment extends Fragment {
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                UserPresent.user_id = null;
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.container, new NotLoginAccountFragment());
                 fragmentTransaction.commit();

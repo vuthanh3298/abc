@@ -2,10 +2,11 @@ package vn.edu.uit.tmlnghia.shopping.models;
 
 public class ShoppingCartItemDetail {
 
+    private String id;
     private String name;
     private String seller;
-    private int image;
-    private int price;
+    private String image;
+    private double price;
     private int numberOfItem;
 
 
@@ -14,12 +15,33 @@ public class ShoppingCartItemDetail {
 
     }
 
-    public ShoppingCartItemDetail(String name, String seller, int image, int price, int numberOfItem) {
+    public ShoppingCartItemDetail(String name, String seller, String image, double price, int numberOfItem) {
         this.name = name;
         this.seller = seller;
         this.image = image;
         this.price = price;
         this.numberOfItem = numberOfItem;
+    }
+
+    public ShoppingCartItemDetail(String id, String name, String seller, String image, double price, int numberOfItem) {
+        this.id = id;
+        this.name = name;
+        this.seller = seller;
+        this.image = image;
+        this.price = price;
+        this.numberOfItem = numberOfItem;
+    }
+
+    public double getTotalPrice() {
+        return price * numberOfItem;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -38,19 +60,19 @@ public class ShoppingCartItemDetail {
         this.seller = seller;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

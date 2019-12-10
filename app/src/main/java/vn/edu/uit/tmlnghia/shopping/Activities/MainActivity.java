@@ -20,6 +20,7 @@ import vn.edu.uit.tmlnghia.shopping.fragments.HomeFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.LoggedInAccountFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.NotLoginAccountFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.SearchFragment;
+import vn.edu.uit.tmlnghia.shopping.until.UserPresent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 //                    TODO Thêm điều kiện để hiển thị loại màn hình tài khoản khi bấm vào biểu tượng tài khoản dưới thanh nav
 //                    Nếu tài khoản chưa đăng nhập thì hiển thị màn hình NotLoginAccountFragment
 //                    Nếu tài khoản đã đăng nhập thì hiển thị màn hình LoggedInAccountFragment
-                    if (true)
+                    if (UserPresent.user_id != null)
                         selectedFragment = new LoggedInAccountFragment();
                     else
                         selectedFragment = new NotLoginAccountFragment();

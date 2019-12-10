@@ -61,7 +61,7 @@ public class CategoryFragment extends Fragment {
 //        gia_dinh_nha_cua.add(new CategoryItemGroup("Ô tô", R.drawable.o_to));
 //        gia_dinh_nha_cua.add(new CategoryItemGroup("TV - Tủ lạnh - Máy giặt", R.drawable.ti_vi_tu_lanh_may_giat));
 
-        getDanhMucTask task = new getDanhMucTask();
+        GetDanhMucTask task = new GetDanhMucTask();
         task.execute("giadinhnhacua");
 
 //        Thêm chi tiết nhóm hàng Công nghệ
@@ -168,7 +168,7 @@ public class CategoryFragment extends Fragment {
         return view;
     }
 
-    class getDanhMucTask extends AsyncTask<String, Void, ArrayList<DanhMuc>> {
+    class GetDanhMucTask extends AsyncTask<String, Void, ArrayList<DanhMuc>> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

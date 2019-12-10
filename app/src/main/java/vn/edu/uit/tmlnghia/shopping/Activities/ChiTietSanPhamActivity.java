@@ -49,7 +49,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_san_pham);
-
         getData();
         initControls();
         loadDataToView();
@@ -67,13 +66,14 @@ public class ChiTietSanPhamActivity extends AppCompatActivity{
                     Toast.makeText(ChiTietSanPhamActivity.this, "Bạn cần đăng nhập trước", Toast.LENGTH_LONG).show();
                     return;
                 }
-                postThemVaoGioHangTask task = new postThemVaoGioHangTask();
+                PostThemVaoGioHangTask task = new PostThemVaoGioHangTask();
                 String params = "";
                 params += "?user_id=" + UserPresent.user_id;
-                params += "&sanpham_id=" + sp.getMaSanPham();
-                params += "&soluong=1";
-                params += "&daxuat=false";
-                params += "&danhan=false";
+                params += "&sanPham_id=" + sp.getMaSanPham();
+                params += "&soLuong=1";
+                params += "&thanhTien=" + sp.getGia();
+                params += "&daXuat=false";
+                params += "&hinh=" + sp.getHinh();
                 task.execute(params);
             }
         });
@@ -121,14 +121,9 @@ public class ChiTietSanPhamActivity extends AppCompatActivity{
         recyclerViewHinhSanPhams = findViewById(R.id.recyclerImgSanPhams);
         adapterItem = new DanhSachHinhItemAdapter(getApplicationContext(), hinhs,clickListener);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
         recyclerViewHinhSanPhams.setLayoutManager(layoutManager);
         recyclerViewHinhSanPhams.setAdapter(adapterItem);
     }
-
-
-
-
 
     class getHinhSanPhamTask extends AsyncTask<String, Void, ArrayList<String>>{
         @Override
@@ -169,7 +164,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity{
         }
     }
 
-    class postThemVaoGioHangTask extends AsyncTask<String, Void, Boolean>{
+    class PostThemVaoGioHangTask extends AsyncTask<String, Void, Boolean>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -179,7 +174,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity{
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             if(aBoolean.booleanValue() == true){
-                //Toast.makeText(ChiTietSanPhamActivity.this, "đã thêm sản phẩm thành công", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(ChiTietSanPhamActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
             }
@@ -193,10 +187,9 @@ public class ChiTietSanPhamActivity extends AppCompatActivity{
         @Override
         protected Boolean doInBackground(String... strings) {
             try{
-                return Webserviecs.postAPI("api/donhangs/create" + strings[0]);
+                return Webserviecs.postAPI("api/giohangs/create" + strings[0]);
             } catch (Exception ex){}
             return false;
         }
     }
-
 }

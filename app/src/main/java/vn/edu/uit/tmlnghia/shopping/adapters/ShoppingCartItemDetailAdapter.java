@@ -1,6 +1,7 @@
 package vn.edu.uit.tmlnghia.shopping.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +12,42 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
+import vn.edu.uit.tmlnghia.shopping.Activities.ChiTietSanPhamActivity;
+import vn.edu.uit.tmlnghia.shopping.Activities.MyAdapterListener;
+import vn.edu.uit.tmlnghia.shopping.Activities.ShoppingCartActivity;
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.models.ShoppingCartItemDetail;
+import vn.edu.uit.tmlnghia.shopping.until.ImageLoadTask;
 
 public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<ShoppingCartItemDetailAdapter.MyViewHolder> {
 
     private Context context;
     private List<ShoppingCartItemDetail> data;
+    public MyAdapterListener onClickListener;
 
-
-    public ShoppingCartItemDetailAdapter(Context context, List<ShoppingCartItemDetail> data) {
+    public ShoppingCartItemDetailAdapter(Context context, List<ShoppingCartItemDetail> data, MyAdapterListener onClickListener) {
         this.context = context;
         this.data = data;
+        this.onClickListener = onClickListener;
+    }
+
+    public void remove(int position) {
+        data.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, getItemCount());
+    }
+
+    public void restore(ShoppingCartItemDetail item, int position) {
+        data.add(position, item);
+        notifyItemInserted(position);
+        notifyItemRangeChanged(position, getItemCount());
+    }
+
+    public List<ShoppingCartItemDetail> getData() {
+        return data;
     }
 
     @NonNull
@@ -38,47 +61,38 @@ public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<Shopping
         return new MyViewHolder(view);
     }
 
-
-    //    Xuất số tiền từ int thành chuỗi String có dấu chấm
-    private String getPrice(int num, int count) {
-        count++;
-        if (num == 0)
-            return "";
-        if (count < 3)
-            return getPrice(num / 10, count) + num % 10;
-        return getPrice(num / 10, 0) + "." + num % 10;
+    private void changeActivity(String id){
+        Intent intent = new Intent(this.context, ChiTietSanPhamActivity.class);
+        intent.putExtra("chitietsanpham", id);
+        this.context.startActivity(intent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-
-//        Xuất giá sản phẩm từ số thành chuỗi
-        String price = getPrice(data.get(position).getPrice(), 0) + " đ";
-//        Định dạng hiển thị cho nhà cung cấp
-        String seller = "Cung cấp bởi " + data.get(position).getSeller();
-
+        final ShoppingCartItemDetail item = data.get(position);
 //        Gán các giá trị cho holder
-        holder.name.setText(data.get(position).getName());
-        holder.image.setImageResource(data.get(position).getImage());
-        holder.price.setText(price);
-        holder.seller.setText(seller);
-//        holder.numberOfItem.setText(data.get(position).getNumberOfItem());
+        holder.name.setText(item.getName());
+        DecimalFormat dcf = new DecimalFormat( "#,###,###,###" );
+        holder.price.setText(dcf.format(item.getPrice()) + " đ");
+        holder.seller.setText("Cung cấp bởi " + item.getSeller());
+        holder.numberOfItem.setText(item.getNumberOfItem() + "");
+        (new ImageLoadTask(item.getImage(),holder.image)).execute();
 
-//        TODO Tạo sự kiện nhấn cho sản phẩm trong giỏ hàng (Nhấn vào hình hoặc tiêu đề)
-//        Chuyển đến màn hình chi tiết mặt hàng
+//      TODO Tạo sự kiện nhấn cho sản phẩm trong giỏ hàng (Nhấn vào hình hoặc tiêu đề)
+//       Chuyển đến màn hình chi tiết mặt hàng
 
 //        Khi nhấn vào hình ảnh mặt hàng
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, data.get(position).getName(), Toast.LENGTH_SHORT).show();
+                changeActivity(item.getId());
             }
         });
 //        Khi nhấn vào tiêu đề sản phẩm
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, data.get(position).getName(), Toast.LENGTH_SHORT).show();
+                changeActivity(item.getId());
             }
         });
 
@@ -88,6 +102,7 @@ public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<Shopping
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Xóa sản phẩm", Toast.LENGTH_SHORT).show();
+                onClickListener.btnViewOnClick(v, position);
             }
         });
 
@@ -104,9 +119,6 @@ public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<Shopping
                 Toast.makeText(context, "Số lượng tăng lên 1", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
 
     @Override
@@ -114,8 +126,7 @@ public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<Shopping
         return data.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView image;
         TextView price;
@@ -123,13 +134,10 @@ public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<Shopping
         TextView deleteButton;
         ImageView decreaseButton;
         ImageView increaseButton;
-//        TextView numberOfItem;
-
-
+        TextView numberOfItem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             name = itemView.findViewById(R.id.item_detail_name);
             image = itemView.findViewById(R.id.item_image);
             price = itemView.findViewById(R.id.item_detail_new_price);
@@ -137,8 +145,7 @@ public class ShoppingCartItemDetailAdapter extends RecyclerView.Adapter<Shopping
             deleteButton = itemView.findViewById(R.id.delete_button);
             decreaseButton = itemView.findViewById(R.id.decrease_button);
             increaseButton = itemView.findViewById(R.id.increase_button);
-//            numberOfItem = itemView.findViewById(R.id.number_of_item);
-
+            numberOfItem = itemView.findViewById(R.id.number_of_item);
         }
     }
 }

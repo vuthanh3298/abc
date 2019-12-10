@@ -44,6 +44,7 @@ public class CategoryItemGroupAdapter2 extends RecyclerView.Adapter<CategoryItem
 
         final DanhMuc dm = data.get(position);
         holder.tv_image_title.setText(dm.getTenDanhMuc());
+
         ImageLoadTask task = new ImageLoadTask(dm.getHinh(),holder.img_image);
         task.execute();
 
@@ -74,11 +75,9 @@ public class CategoryItemGroupAdapter2 extends RecyclerView.Adapter<CategoryItem
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tv_image_title = itemView.findViewById(R.id.item_title);
             img_image = itemView.findViewById(R.id.item_image);
             linearLayout = itemView.findViewById(R.id.container);
-
         }
     }
 }

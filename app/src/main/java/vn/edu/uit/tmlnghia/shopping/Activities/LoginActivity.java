@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String params = "?email=" + URLEncoder.encode(edtEmail.getText().toString()) +
-                        "&password=" + URLEncoder.encode(edtPassword.getText().toString());
+                                "&password=" + URLEncoder.encode(edtPassword.getText().toString());
                 loginTask task = new loginTask();
                 task.execute(params);
             }
@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             return;
         } else {
-            intent = new Intent(LoginActivity.this, SignupActivity.class);
+            intent = new Intent(LoginActivity.this, MainActivity.class);
         }
         LoginActivity.this.startActivity(intent);
     }
@@ -151,8 +151,12 @@ public class LoginActivity extends AppCompatActivity {
                 JSONArray jsonArray = Webserviecs.getJsonArray("api/users" + strings[0]);
                 if(jsonArray.length() > 0){
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    UserPresent.user_id = jsonObject.getString("_id");
-                    return true;
+                    if(jsonObject.has("_id")) {
+                        UserPresent.user_id = jsonObject.getString("_id");
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             } catch (Exception ex){
                 Log.e("Loi: ", ex.toString());
