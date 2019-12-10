@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,13 +16,20 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import vn.edu.uit.tmlnghia.shopping.R;
 import vn.edu.uit.tmlnghia.shopping.fragments.CategoryFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.HomeFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.LoggedInAccountFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.NotLoginAccountFragment;
 import vn.edu.uit.tmlnghia.shopping.fragments.SearchFragment;
+import vn.edu.uit.tmlnghia.shopping.models.ShoppingCartItemDetail;
 import vn.edu.uit.tmlnghia.shopping.until.UserPresent;
+import vn.edu.uit.tmlnghia.shopping.until.Webserviecs;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -113,17 +122,12 @@ public class MainActivity extends AppCompatActivity {
                 //    TODO Gán hành động cho việc nhấn vào giỏ hàng trên actions bar, chuyển đến màn hình giỏ hàng
 //                Nếu giỏ hàng trống thì chuyển đến empty activity
 //                Nếu giỏ hàng không trống thì chuyển đến giỏ hàng
-                Intent intent;
-                if (!true)
-                    intent = new Intent(this, EmptyShoppingCartActivity.class);
-                else
-                    intent = new Intent(this, ShoppingCartActivity.class);
+                Intent intent = new Intent(this, ShoppingCartActivity.class);
                 this.startActivity(intent);
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

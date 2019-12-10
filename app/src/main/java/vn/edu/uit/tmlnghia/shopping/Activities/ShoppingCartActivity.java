@@ -1,9 +1,11 @@
 package vn.edu.uit.tmlnghia.shopping.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +38,9 @@ public class ShoppingCartActivity extends AppCompatActivity {
     TextView oderButton;
     TextView oldPrice;
     TextView totalPrice;
+    ConstraintLayout emptyCart;
+    TextView emptyText;
+    TextView continueButton;
 
     final DecimalFormat dcf = new DecimalFormat( "#,###,###,###" );
 
@@ -46,14 +51,43 @@ public class ShoppingCartActivity extends AppCompatActivity {
         shoppingCartLayout = this.findViewById(R.id.shopping_cart_layout);
         oldPrice = this.findViewById(R.id.old_price);
         totalPrice = this.findViewById(R.id.total_price);
+        emptyText = this.findViewById(R.id.empty_text);
+        continueButton = this.findViewById(R.id.continue_button);
 
 //        TODO Thiết lập thanh action bar, thay đổi chức năng nút close
         getSupportActionBar().setTitle(R.string.shopping_cart);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.close_action);
 
-//      Danh sách các mặt hàng trong giỏ hàng
+        emptyCart = this.findViewById(R.id.empty_shopping_cart_constraintlayout);
+
         shoppingCartItemList = new ArrayList<>();
+
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                if(UserPresent.user_id == null)
+                    intent = new Intent(ShoppingCartActivity.this, LoginActivity.class);
+                else
+                    intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        if(UserPresent.user_id == null){
+            emptyText.setText("Bạn chưa đăng nhập, vui lòng đăng nhập");
+            continueButton.setText(R.string.login);
+            emptyCart.setVisibility(View.VISIBLE);
+        }
+
+        else {
+            LoadGioHangTask task = new LoadGioHangTask();
+            task.execute("?user_id=" + UserPresent.user_id);
+
+        }
+//      Danh sách các mặt hàng trong giỏ hàng
+
         shoppingCartItemDetailAdapter = new ShoppingCartItemDetailAdapter(this, shoppingCartItemList, new MyAdapterListener() {
             @Override
             public void btnViewOnClick(View v, int position) {
@@ -99,10 +133,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         });
 
         //load danh sach trong gio hang
-        if(UserPresent.user_id != null) {
-            LoadGioHangTask task = new LoadGioHangTask();
-            task.execute("?user_id=" + UserPresent.user_id);
-        }
+
     }
 
     private void LoadPrice(){
@@ -154,6 +185,12 @@ public class ShoppingCartActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<ShoppingCartItemDetail> shoppingCartItemDetails) {
             super.onPostExecute(shoppingCartItemDetails);
             if(shoppingCartItemDetails != null) {
+                if(shoppingCartItemDetails.size() > 0){
+                    emptyCart.setVisibility(View.INVISIBLE);
+                } else {
+                    emptyText.setText(R.string.shopping_cart_is_empty);
+                }
+
                 shoppingCartItemList.clear();
                 shoppingCartItemList.addAll(shoppingCartItemDetails);
                 shoppingCartItemDetailAdapter.notifyDataSetChanged();

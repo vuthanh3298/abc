@@ -13,9 +13,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activities.EmptyShoppingCartActivity"
-            android:parentActivityName=".Activities.MainActivity"></activity>
-        <activity
             android:name=".Activities.LoginActivity"
             android:parentActivityName=".Activities.MainActivity" />
         <activity
